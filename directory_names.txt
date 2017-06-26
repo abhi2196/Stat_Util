@@ -1,0 +1,5 @@
+/home/abhishek/Documents/Work/Stat_util
+/home/abhishek/Downloads
+/home/abhishek/Music
+/home/abhishek/Videos
+/home/abhishek

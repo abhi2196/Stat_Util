@@ -1,0 +1,62 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+DIRS_MAX	include/common.h	11;"	d
+HASH_INSERT	include/common.h	/^	HASH_INSERT = 0,$/;"	e	enum:HASH_OPCODES
+HASH_ITERATE	include/common.h	/^	HASH_ITERATE = 1,$/;"	e	enum:HASH_OPCODES
+HASH_OPCODES	include/common.h	/^enum HASH_OPCODES{$/;"	g
+MAX_DIR	include/common.h	/^	int MAX_DIR;$/;"	m	struct:g_config
+NAME_MAX	include/common.h	10;"	d
+PATH_MAX	include/common.h	9;"	d
+SC_ERRORCODES	include/common.h	/^enum SC_ERRORCODES{$/;"	g
+SC_FAILURE	include/common.h	/^	SC_FAILURE = 1$/;"	e	enum:SC_ERRORCODES
+SC_SUCCESS	include/common.h	/^	SC_SUCCESS = 0,$/;"	e	enum:SC_ERRORCODES
+THREADS_MAX	include/common.h	12;"	d
+buffer	include/common.h	/^	struct stat buffer;$/;"	m	struct:local_data	typeref:struct:local_data::stat
+create_g_config	src/common.c	/^g_config_t* create_g_config()$/;"	f
+create_hash	src/hash_util.c	/^int create_hash(g_config_t* info_t)$/;"	f
+create_thread_data	src/common.c	/^local_data_t* create_thread_data()$/;"	f
+create_value_for_hash	src/common.c	/^int create_value_for_hash(local_data_t* thread_t)$/;"	f
+directory_hash	include/common.h	/^	GHashTable *directory_hash;$/;"	m	struct:g_config
+disp_value_for_hash	src/common.c	/^void disp_value_for_hash(local_data_t* thread_t)$/;"	f
+end_time	include/common.h	/^	struct tm *end_time;$/;"	m	struct:value_for_hash	typeref:struct:value_for_hash::tm
+fp	include/common.h	/^FILE* fp;$/;"	v
+free_data	src/hash_util.c	/^void free_data(gpointer data)$/;"	f
+free_hash_table	src/hash_util.c	/^int free_hash_table(g_config_t* g_thread)$/;"	f
+free_local_thread_data	src/common.c	/^int free_local_thread_data(local_data_t* thread_t)$/;"	f
+g_config	include/common.h	/^typedef struct g_config$/;"	s
+g_config_t	include/common.h	/^}g_config_t;$/;"	t	typeref:struct:g_config
+hash_operations	src/hash_util.c	/^int hash_operations(int op_id, g_config_t* g_thread, local_data_t* thread_t)$/;"	f
+id	include/common.h	/^    int id;$/;"	m	struct:wrapper_g_config
+info_t	include/common.h	/^	value_for_hash_t *info_t;$/;"	m	struct:local_data
+inode_no	include/common.h	/^	long int inode_no;$/;"	m	struct:local_data
+iterator	src/hash_util.c	/^void iterator(gpointer key, gpointer value, gpointer table_data)$/;"	f
+ll	include/common.h	13;"	d
+local_data	include/common.h	/^typedef struct local_data$/;"	s
+local_data_t	include/common.h	/^}local_data_t;$/;"	t	typeref:struct:local_data
+lock	include/common.h	/^pthread_mutex_t lock;$/;"	v
+main	src/stat1.c	/^int main()$/;"	f
+main	src/stat_0.c	/^int main()$/;"	f
+no_of_dirs	include/common.h	/^	int no_of_dirs;$/;"	m	struct:value_for_hash
+no_of_files	include/common.h	/^	int no_of_files;$/;"	m	struct:value_for_hash
+path	include/common.h	/^	char path[PATH_MAX];$/;"	m	struct:thread_data
+path_len	include/common.h	/^size_t path_len;$/;"	v
+path_names_array	include/common.h	/^	char *path_names_array[DIRS_MAX];$/;"	m	struct:g_config
+print_stat	src/stat_util.c	/^void print_stat(local_data_t* thread_t)$/;"	f
+read_dir_file	src/common.c	/^int read_dir_file(g_config_t* thread_t)$/;"	f
+scan_dir	src/stat_util.c	/^int scan_dir(local_data_t* thread_t)$/;"	f
+start_time	include/common.h	/^	struct tm *start_time;$/;"	m	struct:value_for_hash	typeref:struct:value_for_hash::tm
+thread	include/common.h	/^	pthread_t *thread;$/;"	m	struct:g_config
+thread_data	include/common.h	/^typedef struct thread_data$/;"	s
+thread_data_t	include/common.h	/^}thread_data_t;$/;"	t	typeref:struct:thread_data
+thread_func	src/stat1.c	/^void* thread_func(void* userdata)$/;"	f
+thread_id	include/common.h	/^	int thread_id;$/;"	m	struct:thread_data
+thread_t	include/common.h	/^    g_config_t *thread_t;$/;"	m	struct:wrapper_g_config
+tinfo_t	include/common.h	/^	thread_data_t *tinfo_t;$/;"	m	struct:local_data
+value_for_hash	include/common.h	/^typedef struct value_for_hash$/;"	s
+value_for_hash_t	include/common.h	/^}value_for_hash_t;$/;"	t	typeref:struct:value_for_hash
+wrapper_g_config	include/common.h	/^typedef struct wrapper_g_config$/;"	s
+wrapper_g_config_t	include/common.h	/^}wrapper_g_config_t;$/;"	t	typeref:struct:wrapper_g_config

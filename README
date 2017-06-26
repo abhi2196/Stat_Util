@@ -1,0 +1,11 @@
+Muti-threaded Application to print stat for given directories and to maintain a hash_table for recording the summary of each directory.
+
+How to Run :
+
+	1)	make
+	2)	bin/statrun
+
+
+Help:
+	We can provide the directory paths in directory_names.txt file.
+	Maximum No of threads, directories to be processed can be changed in include/common.h file.
