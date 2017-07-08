@@ -23,6 +23,7 @@ create_value_for_hash	src/common.c	/^int create_value_for_hash(local_data_t* thr
 directory_hash	include/common.h	/^	GHashTable *directory_hash;$/;"	m	struct:g_config
 disp_value_for_hash	src/common.c	/^void disp_value_for_hash(local_data_t* thread_t)$/;"	f
 end_time	include/common.h	/^	struct tm *end_time;$/;"	m	struct:value_for_hash	typeref:struct:value_for_hash::tm
+flags	include/mem_cache_util.h	/^uint32_t flags;$/;"	v
 fp	include/common.h	/^FILE* fp;$/;"	v
 free_data	src/hash_util.c	/^void free_data(gpointer data)$/;"	f
 free_hash_table	src/hash_util.c	/^int free_hash_table(g_config_t* g_thread)$/;"	f
@@ -38,16 +39,23 @@ ll	include/common.h	13;"	d
 local_data	include/common.h	/^typedef struct local_data$/;"	s
 local_data_t	include/common.h	/^}local_data_t;$/;"	t	typeref:struct:local_data
 lock	include/common.h	/^pthread_mutex_t lock;$/;"	v
+lookup_hash_table_with_key	src/hash_util.c	/^gpointer lookup_hash_table_with_key(g_config_t* thread_t, gpointer key_t)$/;"	f
 main	src/stat1.c	/^int main()$/;"	f
 main	src/stat_0.c	/^int main()$/;"	f
+mem_cache_init	src/mem_cache_util.c	/^int mem_cache_init()$/;"	f
+mem_cache_query	src/mem_cache_util.c	/^int mem_cache_query(g_config_t* thread_t, char* key)$/;"	f
+memc	include/mem_cache_util.h	/^memcached_st *memc;$/;"	v
 no_of_dirs	include/common.h	/^	int no_of_dirs;$/;"	m	struct:value_for_hash
 no_of_files	include/common.h	/^	int no_of_files;$/;"	m	struct:value_for_hash
 path	include/common.h	/^	char path[PATH_MAX];$/;"	m	struct:thread_data
 path_len	include/common.h	/^size_t path_len;$/;"	v
 path_names_array	include/common.h	/^	char *path_names_array[DIRS_MAX];$/;"	m	struct:g_config
 print_stat	src/stat_util.c	/^void print_stat(local_data_t* thread_t)$/;"	f
+rc	include/mem_cache_util.h	/^memcached_return rc;$/;"	v
 read_dir_file	src/common.c	/^int read_dir_file(g_config_t* thread_t)$/;"	f
+retrieved_value	include/mem_cache_util.h	/^char* retrieved_value;$/;"	v
 scan_dir	src/stat_util.c	/^int scan_dir(local_data_t* thread_t)$/;"	f
+servers	include/mem_cache_util.h	/^memcached_server_st *servers = NULL;$/;"	v
 start_time	include/common.h	/^	struct tm *start_time;$/;"	m	struct:value_for_hash	typeref:struct:value_for_hash::tm
 thread	include/common.h	/^	pthread_t *thread;$/;"	m	struct:g_config
 thread_data	include/common.h	/^typedef struct thread_data$/;"	s
@@ -58,5 +66,6 @@ thread_t	include/common.h	/^    g_config_t *thread_t;$/;"	m	struct:wrapper_g_con
 tinfo_t	include/common.h	/^	thread_data_t *tinfo_t;$/;"	m	struct:local_data
 value_for_hash	include/common.h	/^typedef struct value_for_hash$/;"	s
 value_for_hash_t	include/common.h	/^}value_for_hash_t;$/;"	t	typeref:struct:value_for_hash
+value_length	include/mem_cache_util.h	/^size_t value_length;$/;"	v
 wrapper_g_config	include/common.h	/^typedef struct wrapper_g_config$/;"	s
 wrapper_g_config_t	include/common.h	/^}wrapper_g_config_t;$/;"	t	typeref:struct:wrapper_g_config

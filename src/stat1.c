@@ -6,6 +6,9 @@ int scan_dir(local_data_t*);
 int create_hash(g_config_t*);
 int hash_operations(int, g_config_t*, local_data_t*);
 int free_hash_table(g_config_t*);
+
+int mem_cache_init();
+int mem_cache_query(g_config_t*, char*);
 	
 void* thread_func(void* userdata)
 {
@@ -156,6 +159,22 @@ int main()
     if(retVal != SC_SUCCESS)
     {
    		 goto clean;
+    }
+    
+	//initializing the memcache_st object & servers
+	retVal = mem_cache_init();
+   
+	if(retVal != SC_SUCCESS)
+    {
+        goto clean;
+    }
+
+	//testing mem_cache_query
+	retVal = mem_cache_query(thread_t,"12058625");
+
+	if(retVal != SC_SUCCESS)
+    {
+         goto clean;
     }
 
 clean:

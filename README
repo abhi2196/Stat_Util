@@ -8,4 +8,4 @@ How to Run :
 
 Help:
 	We can provide the directory paths in directory_names.txt file.
-	Maximum No of threads, directories to be processed can be changed in include/common.h file.
+	Maximum No of threads, directories to be processed can be changed in include/common.h.

@@ -76,5 +76,16 @@ int free_hash_table(g_config_t* g_thread)
 		return 0;
 }
 
+gpointer lookup_hash_table_with_key(g_config_t* thread_t, gpointer key_t)
+{
+	GHashTableIter iter;
+	gpointer key,value;
 
+	g_hash_table_iter_init(&iter, thread_t->directory_hash);
+	while (g_hash_table_iter_next (&iter, &key, &value))
+	{
+		if(*(gint*)key == atoi(key_t))
+		return g_hash_table_lookup(thread_t->directory_hash, key);
+	}
+}
 
