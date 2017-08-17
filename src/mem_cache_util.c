@@ -27,7 +27,8 @@ int mem_cache_query(g_config_t* thread_t, char* key)
  	retrieved_value = memcached_get(memc, key, strlen(key), &value_length, &flags, &rc);
     
     if (rc == MEMCACHED_SUCCESS) {
-      
+     
+	  fprintf(stdout, "\n**************************\n"); 
 	  fprintf(stderr, "Key retrieved successfully\n");
 	  printf("no. of files: %d\n", ((value_for_hash_t*)retrieved_value)->no_of_files);  
 	  printf("no. of dirs: %d\n", ((value_for_hash_t*)retrieved_value)->no_of_dirs);

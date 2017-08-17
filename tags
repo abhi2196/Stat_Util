@@ -10,6 +10,7 @@ HASH_ITERATE	include/common.h	/^	HASH_ITERATE = 1,$/;"	e	enum:HASH_OPCODES
 HASH_OPCODES	include/common.h	/^enum HASH_OPCODES{$/;"	g
 MAX_DIR	include/common.h	/^	int MAX_DIR;$/;"	m	struct:g_config
 NAME_MAX	include/common.h	10;"	d
+OPENDBMODE	include/lmdb_cache_util.h	6;"	d
 PATH_MAX	include/common.h	9;"	d
 SC_ERRORCODES	include/common.h	/^enum SC_ERRORCODES{$/;"	g
 SC_FAILURE	include/common.h	/^	SC_FAILURE = 1$/;"	e	enum:SC_ERRORCODES
@@ -30,18 +31,25 @@ free_hash_table	src/hash_util.c	/^int free_hash_table(g_config_t* g_thread)$/;"	
 free_local_thread_data	src/common.c	/^int free_local_thread_data(local_data_t* thread_t)$/;"	f
 g_config	include/common.h	/^typedef struct g_config$/;"	s
 g_config_t	include/common.h	/^}g_config_t;$/;"	t	typeref:struct:g_config
+g_ptrLMDBEnv	include/lmdb_cache_util.h	/^MDB_env *g_ptrLMDBEnv;$/;"	v
 hash_operations	src/hash_util.c	/^int hash_operations(int op_id, g_config_t* g_thread, local_data_t* thread_t)$/;"	f
 id	include/common.h	/^    int id;$/;"	m	struct:wrapper_g_config
 info_t	include/common.h	/^	value_for_hash_t *info_t;$/;"	m	struct:local_data
 inode_no	include/common.h	/^	long int inode_no;$/;"	m	struct:local_data
 iterator	src/hash_util.c	/^void iterator(gpointer key, gpointer value, gpointer table_data)$/;"	f
 ll	include/common.h	13;"	d
+lmdbDirPath	include/lmdb_cache_util.h	/^char lmdbDirPath[] = "\/lmdb-data";$/;"	v
+lmdb_cache_init	src/lmdb_cache_util.c	/^int lmdb_cache_init()$/;"	f
+lmdb_cache_query	src/lmdb_cache_util.c	/^int lmdb_cache_query(g_config_t* thread_t, char* key)$/;"	f
+lmdb_close	src/lmdb_cache_util.c	/^int lmdb_close(){$/;"	f
 local_data	include/common.h	/^typedef struct local_data$/;"	s
 local_data_t	include/common.h	/^}local_data_t;$/;"	t	typeref:struct:local_data
 lock	include/common.h	/^pthread_mutex_t lock;$/;"	v
 lookup_hash_table_with_key	src/hash_util.c	/^gpointer lookup_hash_table_with_key(g_config_t* thread_t, gpointer key_t)$/;"	f
-main	src/stat1.c	/^int main()$/;"	f
+main	src/stat1.c	/^int main(int argc, char** argv)$/;"	f
 main	src/stat_0.c	/^int main()$/;"	f
+mdb_data_get	src/lmdb_cache_util.c	/^int mdb_data_get(char* key_s, value_for_hash_t* value){$/;"	f
+mdb_data_put	src/lmdb_cache_util.c	/^int mdb_data_put(char *skey, int keySize, void *sval, size_t svalSize){$/;"	f
 mem_cache_init	src/mem_cache_util.c	/^int mem_cache_init()$/;"	f
 mem_cache_query	src/mem_cache_util.c	/^int mem_cache_query(g_config_t* thread_t, char* key)$/;"	f
 memc	include/mem_cache_util.h	/^memcached_st *memc;$/;"	v
@@ -51,8 +59,10 @@ path	include/common.h	/^	char path[PATH_MAX];$/;"	m	struct:thread_data
 path_len	include/common.h	/^size_t path_len;$/;"	v
 path_names_array	include/common.h	/^	char *path_names_array[DIRS_MAX];$/;"	m	struct:g_config
 print_stat	src/stat_util.c	/^void print_stat(local_data_t* thread_t)$/;"	f
+rc	include/lmdb_cache_util.h	/^int rc = 0;$/;"	v
 rc	include/mem_cache_util.h	/^memcached_return rc;$/;"	v
 read_dir_file	src/common.c	/^int read_dir_file(g_config_t* thread_t)$/;"	f
+retrieved_value	include/lmdb_cache_util.h	/^value_for_hash_t* retrieved_value;$/;"	v
 retrieved_value	include/mem_cache_util.h	/^char* retrieved_value;$/;"	v
 scan_dir	src/stat_util.c	/^int scan_dir(local_data_t* thread_t)$/;"	f
 servers	include/mem_cache_util.h	/^memcached_server_st *servers = NULL;$/;"	v

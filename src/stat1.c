@@ -1,6 +1,6 @@
 #include "common.h"
 
-void print_stat(struct stat*);
+void print_stat(local_data_t*);
 int scan_dir(local_data_t*);
 
 int create_hash(g_config_t*);
@@ -9,6 +9,10 @@ int free_hash_table(g_config_t*);
 
 int mem_cache_init();
 int mem_cache_query(g_config_t*, char*);
+
+int lmdb_cache_init();                                                                                                                    
+int lmdb_close();                                                                   
+int lmdb_cache_query(g_config_t*, char*);    
 	
 void* thread_func(void* userdata)
 {
@@ -45,7 +49,7 @@ void* thread_func(void* userdata)
         goto cleanup;
     }   
 
-    print_stat(&thread_t->buffer);    
+    print_stat(thread_t);    
 	
 	
     //Scanning the root directory
@@ -85,9 +89,15 @@ cleanup:
     return 0;
 }
 
-int main()
+int main(int argc, char** argv)
 {
 	int retVal = SC_SUCCESS, i=0;
+
+	if(argc != 2)
+	{
+		printf("Usage: bin/statrun <Provide CACHE_TYPE: MEM_CACHE or LMDB>\n");
+		return 1;
+	}
 
 	//creating g_config_t object
 	g_config_t* thread_t = create_g_config();
@@ -161,23 +171,45 @@ int main()
    		 goto clean;
     }
     
-	//initializing the memcache_st object & servers
-	retVal = mem_cache_init();
-   
-	if(retVal != SC_SUCCESS)
-    {
-        goto clean;
-    }
+	if (strcmp(argv[1], "MEM_CACHE") == 0)
+	{
+		//initializing the memcache_st object & servers
+		retVal = mem_cache_init();
+   		if(retVal != SC_SUCCESS)
+    	{
+        	goto clean;
+    	}	
 
-	//testing mem_cache_query
-	retVal = mem_cache_query(thread_t,"12058625");
-
-	if(retVal != SC_SUCCESS)
-    {
-         goto clean;
-    }
+		//testing mem_cache_query
+		retVal = mem_cache_query(thread_t, "12058625");
+		if(retVal != SC_SUCCESS)
+    	{
+       		goto clean;
+    	}	
+	}
+	else
+	{
+		//initializing the lmdb_cache
+		retVal = lmdb_cache_init();
+		if(retVal != SC_SUCCESS)
+		{
+			goto clean;
+		}	
+	
+		//testing lmdb_cache_query
+		retVal = lmdb_cache_query(thread_t, "12058625");
+	
+		if(retVal != SC_SUCCESS)
+		{
+			goto clean;
+		}
+	}
 
 clean:
+	
+	if (strcmp(argv[1], "LMDB") == 0)
+		lmdb_close();
+
 	if(thread_t->thread!=NULL)
 		free(thread_t->thread);
   	
