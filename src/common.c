@@ -3,7 +3,7 @@
 int read_dir_file(g_config_t* thread_t)
 {
 	int j=0;
-	fp = fopen("directory_names.txt", "r");
+	fp = fopen(TEST_DIR_PATH, "r");
 
 	if(fp==NULL)
 	{

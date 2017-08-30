@@ -1,11 +1,12 @@
-#include "lmdb_cache_util.h"
+#include "util/lmdb_cache_util.h"
 
 int mdb_data_put(char *skey, int keySize, void *sval, size_t svalSize){
-
+	
 	MDB_txn *txn = NULL;
 	MDB_dbi dbi;
 	MDB_val key, data;
-	
+	int rc = 0;
+
 	//begin lmdb transcation
 	rc = mdb_txn_begin(g_ptrLMDBEnv, NULL, 0, &txn);
 	
@@ -43,7 +44,7 @@ int mdb_data_get(char* key_s, value_for_hash_t* value){
 	MDB_dbi dbi;
 	MDB_cursor *cursor;
 	MDB_val key, data;
-	int flag = 0, key_int = atoi(key_s);
+	int flag = 0, key_int = atoi(key_s), rc = 0;
 
 	//begin lmdb transaction
 	rc = mdb_txn_begin(g_ptrLMDBEnv, NULL, MDB_RDONLY, &txn);
@@ -84,6 +85,8 @@ int mdb_data_get(char* key_s, value_for_hash_t* value){
 
 int lmdb_cache_init()
 {
+	int rc = 0;
+
 	rc = mdb_env_create(&g_ptrLMDBEnv);
 	if(rc != 0){
 		fprintf(stderr, "failed to create LMDB environment handle\n");
@@ -91,12 +94,12 @@ int lmdb_cache_init()
 	}
 
 	//open env handle
-	rc = mdb_env_open(g_ptrLMDBEnv, lmdbDirPath, 0, OPENDBMODE);
+	rc = mdb_env_open(g_ptrLMDBEnv, LMDB_DIR_PATH, 0, OPENDBMODE);
 	if(rc != 0){
 		fprintf(stderr, "failed to open lmdb\n");
 		return rc;	
 	}
-	retrieved_value = (value_for_hash_t*)malloc(sizeof(value_for_hash_t));
+	retrieved_value_lmdb = (value_for_hash_t*)malloc(sizeof(value_for_hash_t));
 
 	return rc;
 }
@@ -104,32 +107,33 @@ int lmdb_cache_init()
 int lmdb_close(){
 
 	mdb_env_close(g_ptrLMDBEnv);
-	if (retrieved_value != NULL)
+	if (retrieved_value_lmdb != NULL)
 	{
-		free(retrieved_value);
-		retrieved_value = NULL;
+		free(retrieved_value_lmdb);
+		retrieved_value_lmdb = NULL;
 	}
 }
 
 
 int lmdb_cache_query(g_config_t* thread_t, char* key)
 {
+	int rc = 0;
     //retrieving value from lmdb for given key
-    rc = mdb_data_get(key, retrieved_value);
+    rc = mdb_data_get(key, retrieved_value_lmdb);
     
     if (rc == 0) 
 	{
 		fprintf(stdout, "\n**************************\n");
     	fprintf(stderr, "Key retrieved successfully\n");
-	  	if(retrieved_value == NULL)
+	  	if(retrieved_value_lmdb == NULL)
 	  	{	
 			printf("Error: NULL\n");
 			return 1;
       	}
 	  	else
 	  	{
-	  		printf("No. of files: %d\n", retrieved_value->no_of_files);  
-      		printf("No. of dirs: %d\n", retrieved_value->no_of_dirs);
+	  		printf("No. of files: %d\n", retrieved_value_lmdb->no_of_files);  
+      		printf("No. of dirs: %d\n", retrieved_value_lmdb->no_of_dirs);
 	  	}
     }   
     else

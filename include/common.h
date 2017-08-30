@@ -1,3 +1,6 @@
+#ifndef __COMMON_H_
+#define __COMMON_H_
+
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <glib.h>
@@ -10,6 +13,7 @@
 #define NAME_MAX 255
 #define DIRS_MAX 5
 #define THREADS_MAX 5
+#define TEST_DIR_PATH "test/directory_names.txt"
 #define ll unsigned long int
 
 enum SC_ERRORCODES{
@@ -89,4 +93,5 @@ void calculate_scan_time(local_data_t*);
 local_data_t* create_thread_data();
 int free_local_thread_data(local_data_t*);
 
+#endif /*__COMMON_H_*/
 

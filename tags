@@ -5,67 +5,84 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 DIRS_MAX	include/common.h	11;"	d
+FREE_VALUE	include/read_write_tests_common.h	7;"	d
 HASH_INSERT	include/common.h	/^	HASH_INSERT = 0,$/;"	e	enum:HASH_OPCODES
 HASH_ITERATE	include/common.h	/^	HASH_ITERATE = 1,$/;"	e	enum:HASH_OPCODES
 HASH_OPCODES	include/common.h	/^enum HASH_OPCODES{$/;"	g
+INT_SIZE	include/read_write_tests_common.h	9;"	d
+MALLOC_VALUE	include/read_write_tests_common.h	6;"	d
 MAX_DIR	include/common.h	/^	int MAX_DIR;$/;"	m	struct:g_config
+MAX_KEYS	include/read_write_tests_common.h	4;"	d
+MAX_VALUE_SIZE	include/read_write_tests_common.h	5;"	d
+MAX_VAL_SIZE	include/read_write_tests_common.h	10;"	d
 NAME_MAX	include/common.h	10;"	d
-OPENDBMODE	include/lmdb_cache_util.h	6;"	d
+OPENDBMODE	include/util/lmdb_cache_util.h	6;"	d
 PATH_MAX	include/common.h	9;"	d
 SC_ERRORCODES	include/common.h	/^enum SC_ERRORCODES{$/;"	g
 SC_FAILURE	include/common.h	/^	SC_FAILURE = 1$/;"	e	enum:SC_ERRORCODES
 SC_SUCCESS	include/common.h	/^	SC_SUCCESS = 0,$/;"	e	enum:SC_ERRORCODES
 THREADS_MAX	include/common.h	12;"	d
+VERSION	include/read_write_tests_common.h	8;"	d
+block_value	src/util/read_write_tests/read_write_util.c	/^char block_value[MAX_VALUE_SIZE] = {0};$/;"	v
 buffer	include/common.h	/^	struct stat buffer;$/;"	m	struct:local_data	typeref:struct:local_data::stat
+cache_value	include/read_write_tests_common.h	/^typedef struct cache_value{$/;"	s
+cache_value_t	include/read_write_tests_common.h	/^}cache_value_t;$/;"	t	typeref:struct:cache_value
+copy_value_to_block	src/util/read_write_tests/read_write_util.c	/^int copy_value_to_block(cache_value_t* value)$/;"	f
 create_g_config	src/common.c	/^g_config_t* create_g_config()$/;"	f
-create_hash	src/hash_util.c	/^int create_hash(g_config_t* info_t)$/;"	f
+create_hash	src/util/hash_util.c	/^int create_hash(g_config_t* info_t)$/;"	f
 create_thread_data	src/common.c	/^local_data_t* create_thread_data()$/;"	f
 create_value_for_hash	src/common.c	/^int create_value_for_hash(local_data_t* thread_t)$/;"	f
+create_value_from_id	src/util/read_write_tests/read_write_util.c	/^int create_value_from_id(cache_value_t* value, int id, int version)$/;"	f
 directory_hash	include/common.h	/^	GHashTable *directory_hash;$/;"	m	struct:g_config
 disp_value_for_hash	src/common.c	/^void disp_value_for_hash(local_data_t* thread_t)$/;"	f
 end_time	include/common.h	/^	struct tm *end_time;$/;"	m	struct:value_for_hash	typeref:struct:value_for_hash::tm
-flags	include/mem_cache_util.h	/^uint32_t flags;$/;"	v
+flags	include/util/mem_cache_util.h	/^uint32_t flags;$/;"	v
 fp	include/common.h	/^FILE* fp;$/;"	v
-free_data	src/hash_util.c	/^void free_data(gpointer data)$/;"	f
-free_hash_table	src/hash_util.c	/^int free_hash_table(g_config_t* g_thread)$/;"	f
+free_data	src/util/hash_util.c	/^void free_data(gpointer data)$/;"	f
+free_hash_table	src/util/hash_util.c	/^int free_hash_table(g_config_t* g_thread)$/;"	f
 free_local_thread_data	src/common.c	/^int free_local_thread_data(local_data_t* thread_t)$/;"	f
 g_config	include/common.h	/^typedef struct g_config$/;"	s
 g_config_t	include/common.h	/^}g_config_t;$/;"	t	typeref:struct:g_config
-g_ptrLMDBEnv	include/lmdb_cache_util.h	/^MDB_env *g_ptrLMDBEnv;$/;"	v
-hash_operations	src/hash_util.c	/^int hash_operations(int op_id, g_config_t* g_thread, local_data_t* thread_t)$/;"	f
+g_ptrLMDBEnv	include/util/lmdb_cache_util.h	/^MDB_env *g_ptrLMDBEnv;$/;"	v
+hash_operations	src/util/hash_util.c	/^int hash_operations(int op_id, g_config_t* g_thread, local_data_t* thread_t)$/;"	f
 id	include/common.h	/^    int id;$/;"	m	struct:wrapper_g_config
+id	include/read_write_tests_common.h	/^	int id;$/;"	m	struct:cache_value
 info_t	include/common.h	/^	value_for_hash_t *info_t;$/;"	m	struct:local_data
 inode_no	include/common.h	/^	long int inode_no;$/;"	m	struct:local_data
-iterator	src/hash_util.c	/^void iterator(gpointer key, gpointer value, gpointer table_data)$/;"	f
+iterator	src/util/hash_util.c	/^void iterator(gpointer key, gpointer value, gpointer table_data)$/;"	f
 ll	include/common.h	13;"	d
-lmdbDirPath	include/lmdb_cache_util.h	/^char lmdbDirPath[] = "\/lmdb-data";$/;"	v
-lmdb_cache_init	src/lmdb_cache_util.c	/^int lmdb_cache_init()$/;"	f
-lmdb_cache_query	src/lmdb_cache_util.c	/^int lmdb_cache_query(g_config_t* thread_t, char* key)$/;"	f
-lmdb_close	src/lmdb_cache_util.c	/^int lmdb_close(){$/;"	f
+lmdbDirPath	include/util/lmdb_cache_util.h	/^char lmdbDirPath[] = "\/lmdb-data";$/;"	v
+lmdb_cache_init	src/util/lmdb_cache_util.c	/^int lmdb_cache_init()$/;"	f
+lmdb_cache_query	src/util/lmdb_cache_util.c	/^int lmdb_cache_query(g_config_t* thread_t, char* key)$/;"	f
+lmdb_close	src/util/lmdb_cache_util.c	/^int lmdb_close(){$/;"	f
 local_data	include/common.h	/^typedef struct local_data$/;"	s
 local_data_t	include/common.h	/^}local_data_t;$/;"	t	typeref:struct:local_data
 lock	include/common.h	/^pthread_mutex_t lock;$/;"	v
-lookup_hash_table_with_key	src/hash_util.c	/^gpointer lookup_hash_table_with_key(g_config_t* thread_t, gpointer key_t)$/;"	f
+lookup_hash_table_with_key	src/util/hash_util.c	/^gpointer lookup_hash_table_with_key(g_config_t* thread_t, gpointer key_t)$/;"	f
 main	src/stat1.c	/^int main(int argc, char** argv)$/;"	f
 main	src/stat_0.c	/^int main()$/;"	f
-mdb_data_get	src/lmdb_cache_util.c	/^int mdb_data_get(char* key_s, value_for_hash_t* value){$/;"	f
-mdb_data_put	src/lmdb_cache_util.c	/^int mdb_data_put(char *skey, int keySize, void *sval, size_t svalSize){$/;"	f
-mem_cache_init	src/mem_cache_util.c	/^int mem_cache_init()$/;"	f
-mem_cache_query	src/mem_cache_util.c	/^int mem_cache_query(g_config_t* thread_t, char* key)$/;"	f
-memc	include/mem_cache_util.h	/^memcached_st *memc;$/;"	v
+main	src/util/read_write_tests/run_test.c	/^int main()$/;"	f
+mdb_data_get	src/util/lmdb_cache_util.c	/^int mdb_data_get(char* key_s, value_for_hash_t* value){$/;"	f
+mdb_data_put	src/util/lmdb_cache_util.c	/^int mdb_data_put(char *skey, int keySize, void *sval, size_t svalSize){$/;"	f
+mem_cache_get	src/util/mem_cache_util.c	/^int mem_cache_get(char* key)$/;"	f
+mem_cache_init	src/util/mem_cache_util.c	/^int mem_cache_init()$/;"	f
+mem_cache_put	src/util/mem_cache_util.c	/^int mem_cache_put(char* key, char* value)$/;"	f
+mem_cache_query	src/util/mem_cache_util.c	/^int mem_cache_query(g_config_t* thread_t, char* key)$/;"	f
+memc	include/util/mem_cache_util.h	/^memcached_st *memc;$/;"	v
 no_of_dirs	include/common.h	/^	int no_of_dirs;$/;"	m	struct:value_for_hash
 no_of_files	include/common.h	/^	int no_of_files;$/;"	m	struct:value_for_hash
 path	include/common.h	/^	char path[PATH_MAX];$/;"	m	struct:thread_data
 path_len	include/common.h	/^size_t path_len;$/;"	v
 path_names_array	include/common.h	/^	char *path_names_array[DIRS_MAX];$/;"	m	struct:g_config
-print_stat	src/stat_util.c	/^void print_stat(local_data_t* thread_t)$/;"	f
-rc	include/lmdb_cache_util.h	/^int rc = 0;$/;"	v
-rc	include/mem_cache_util.h	/^memcached_return rc;$/;"	v
+print_stat	src/util/stat_util.c	/^void print_stat(local_data_t* thread_t)$/;"	f
+rc	include/util/lmdb_cache_util.h	/^int rc = 0;$/;"	v
+rc	include/util/mem_cache_util.h	/^memcached_return rc;$/;"	v
+read_blocks_from_mem_cache	src/util/read_write_tests/read_write_util.c	/^int read_blocks_from_mem_cache()$/;"	f
 read_dir_file	src/common.c	/^int read_dir_file(g_config_t* thread_t)$/;"	f
-retrieved_value	include/lmdb_cache_util.h	/^value_for_hash_t* retrieved_value;$/;"	v
-retrieved_value	include/mem_cache_util.h	/^char* retrieved_value;$/;"	v
-scan_dir	src/stat_util.c	/^int scan_dir(local_data_t* thread_t)$/;"	f
-servers	include/mem_cache_util.h	/^memcached_server_st *servers = NULL;$/;"	v
+retrieved_value	include/util/lmdb_cache_util.h	/^value_for_hash_t* retrieved_value;$/;"	v
+retrieved_value	include/util/mem_cache_util.h	/^char* retrieved_value;$/;"	v
+scan_dir	src/util/stat_util.c	/^int scan_dir(local_data_t* thread_t)$/;"	f
+servers	include/util/mem_cache_util.h	/^memcached_server_st *servers = NULL;$/;"	v
 start_time	include/common.h	/^	struct tm *start_time;$/;"	m	struct:value_for_hash	typeref:struct:value_for_hash::tm
 thread	include/common.h	/^	pthread_t *thread;$/;"	m	struct:g_config
 thread_data	include/common.h	/^typedef struct thread_data$/;"	s
@@ -76,6 +93,8 @@ thread_t	include/common.h	/^    g_config_t *thread_t;$/;"	m	struct:wrapper_g_con
 tinfo_t	include/common.h	/^	thread_data_t *tinfo_t;$/;"	m	struct:local_data
 value_for_hash	include/common.h	/^typedef struct value_for_hash$/;"	s
 value_for_hash_t	include/common.h	/^}value_for_hash_t;$/;"	t	typeref:struct:value_for_hash
-value_length	include/mem_cache_util.h	/^size_t value_length;$/;"	v
+value_length	include/util/mem_cache_util.h	/^size_t value_length;$/;"	v
+version	include/read_write_tests_common.h	/^	int version;$/;"	m	struct:cache_value
 wrapper_g_config	include/common.h	/^typedef struct wrapper_g_config$/;"	s
 wrapper_g_config_t	include/common.h	/^}wrapper_g_config_t;$/;"	t	typeref:struct:wrapper_g_config
+write_blocks_to_mem_cache	src/util/read_write_tests/read_write_util.c	/^int write_blocks_to_mem_cache()$/;"	f

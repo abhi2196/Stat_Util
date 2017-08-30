@@ -1,19 +1,9 @@
 #include "common.h"
+#include "util/mem_cache_util.h"
+#include "util/lmdb_cache_util.h"
+#include "util/stat_util.h"
+#include "util/hash_util.h"
 
-void print_stat(local_data_t*);
-int scan_dir(local_data_t*);
-
-int create_hash(g_config_t*);
-int hash_operations(int, g_config_t*, local_data_t*);
-int free_hash_table(g_config_t*);
-
-int mem_cache_init();
-int mem_cache_query(g_config_t*, char*);
-
-int lmdb_cache_init();                                                                                                                    
-int lmdb_close();                                                                   
-int lmdb_cache_query(g_config_t*, char*);    
-	
 void* thread_func(void* userdata)
 {
 	int retVal = SC_SUCCESS;

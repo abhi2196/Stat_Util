@@ -1,9 +1,13 @@
 Muti-threaded Application to print stat for given directories and to maintain a hash_table for recording the summary of each directory.
 
+Caching Support: (specify command line arg)
+	1) memcachedb
+	2) LMDB
+
 How to Run :
 
 	1)	make
-	2)	bin/statrun
+	2)	bin/statrun <MEM_CACHE or LMDB>
 
 
 Help:
